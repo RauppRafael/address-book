@@ -7,12 +7,22 @@
     },
     "dependencies": {
         "aws-sdk": "^2.316.0",
+        "bcryptjs": "^2.4.3",
         "body-parser": "^1.18.3",
         "cookie-parser": "~1.4.3",
         "cors": "^2.8.4",
         "debug": "~2.6.9",
+        "dotenv": "^6.0.0",
         "express": "~4.16.0",
+        "express-validator": "^5.3.0",
+        "jsonwebtoken": "^8.3.0",
         "method-override": "^3.0.0",
-        "morgan": "~1.9.0"
+        "mongodb": "^3.1.6",
+        "mongoose": "^5.2.15",
+        "morgan": "~1.9.0",
+        "passport": "^0.4.0",
+        "passport-http": "^0.3.0",
+        "passport-jwt": "^4.0.0",
+        "passport-local": "^1.0.0"
     }
 }
