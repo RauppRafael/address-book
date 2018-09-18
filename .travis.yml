@@ -4,8 +4,7 @@ node_js:
 - "stable"
 
 env:
-- NODE_ENV="development"
-- NODE_ENV="production";APP_SECRET="bwef2323ou5beawu222giaa76wge8whfi"
+- NODE_ENV="test";APP_SECRET="test123";DB_NAME="mongodb://localhost:27017/test"
 
 services:
 - mongodb
