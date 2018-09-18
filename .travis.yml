@@ -1,0 +1,13 @@
+language: node_js
+
+node_js:
+- "stable"
+
+env:
+- NODE_ENV="development"
+- NODE_ENV="production";APP_SECRET="bwef2323ou5beawu222giaa76wge8whfi"
+
+services:
+- mongodb
+
+script: npm test
