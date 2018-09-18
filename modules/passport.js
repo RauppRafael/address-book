@@ -1,5 +1,5 @@
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
 const User = require('../models/User')
 
 passport.use(
@@ -9,7 +9,7 @@ passport.use(
             passwordField: 'password'
         },
 
-        function (email, password, done) {
+        (email, password, done) => {
             User.findByEmail(email, (err, user) => {
                 if (err)
                     throw err
@@ -20,8 +20,6 @@ passport.use(
                 User.comparePassword(password, user.password, (err, isMatch) => {
                     if (err)
                         throw err
-
-                    console.log(user)
 
                     return isMatch ? done(null, user) : done(null, false, {message: 'Incorrect password'})
                 })

@@ -24,7 +24,7 @@ router.post('/login', validation, (req, res, next) => {
 
             req.login(user, {session: false}, (err) => {
                 if (err) {
-                    res.send(err);
+                    res.send(err)
                 }
 
                 const token = jwt.sign(JSON.stringify(user), appSecret)
@@ -50,6 +50,6 @@ router.post('/register', validation, (req, res, next) => {
     })
 })
 
-module.exports = router;
+module.exports = router
 
 

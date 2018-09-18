@@ -34,4 +34,4 @@ const appSecret = process.env.APP_SECRET
 //         res.send('this is a delete 1');
 //     })
 
-module.exports = router;
+module.exports = router
