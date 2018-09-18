@@ -1,4 +1,5 @@
 const passport = require('passport')
+const passportJWT = require("passport-jwt")
 const LocalStrategy = require('passport-local').Strategy
 const User = require('../models/User')
 
@@ -24,6 +25,27 @@ passport.use(
                     return isMatch ? done(null, user) : done(null, false, {message: 'Incorrect password'})
                 })
 
+            })
+        }
+    )
+)
+
+const JWTStrategy = passportJWT.Strategy
+const ExtractJWT = passportJWT.ExtractJwt
+
+passport.use(
+    new JWTStrategy(
+        {
+            jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+            secretOrKey: process.env.APP_SECRET
+        },
+
+        (jwtPayload, done) => {
+            return User.findById(jwtPayload.id, (err, user) => {
+                if (err)
+                    throw err
+
+                done(null, user)
             })
         }
     )

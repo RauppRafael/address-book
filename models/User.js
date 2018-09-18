@@ -19,12 +19,17 @@ module.exports.createUser = (data, callback) => {
         bcrypt.hash(data.password, salt, function (err, hash) {
             data.password = hash
             data.save(callback)
-        });
-    });
+        })
+    })
 }
 
 module.exports.findByEmail = (email, callback) => {
     const query = {email}
+    User.findOne(query, callback)
+}
+
+module.exports.findById = (id, callback) => {
+    const query = {id}
     User.findOne(query, callback)
 }
 

@@ -23,11 +23,10 @@ router.post('/login', validation, (req, res, next) => {
             }
 
             req.login(user, {session: false}, (err) => {
-                if (err) {
-                    res.send(err)
-                }
+                if (err)
+                    throw err
 
-                const token = jwt.sign(JSON.stringify(user), appSecret)
+                const token = jwt.sign(user.toObject(), appSecret)
                 return res.json({user, token})
             })
         }
