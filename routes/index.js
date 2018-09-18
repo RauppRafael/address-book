@@ -1,9 +1,22 @@
 const express = require('express')
 const router = express.Router()
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' })
-});
+/* GET API routes. */
+router.get('/', (req, res, next) => {
+    res.json({
+        routes: {
+            auth: {
+                login: {
+                    GET: 'Get login form',
+                    POST: 'Returns your access token'
+                },
+                register: {
+                    GET: 'Get registration form',
+                    POST: 'Creates a new account'
+                }
+            },
+        }
+    })
+})
 
 module.exports = router
