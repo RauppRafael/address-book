@@ -2,8 +2,6 @@ const jwt = require('jsonwebtoken')
 const passport = require('passport')
 const User = require('../models/User')
 
-const appSecret = process.env.APP_SECRET
-
 const controller = {
     login(req, res, next) {
         passport.authenticate('local', {session: false},
@@ -16,7 +14,7 @@ const controller = {
                     if (err)
                         throw err
 
-                    const token = jwt.sign(user.toObject(), appSecret)
+                    const token = jwt.sign(user.toObject(), process.env.APP_SECRET)
                     return res.json({user: User.serialize(user), token})
                 })
 

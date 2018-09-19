@@ -44,7 +44,7 @@ module.exports.comparePassword = (password, hash, callback) => {
 
 module.exports.serialize = (user) => {
     return {
-        _id: user._id,
+        id: user.id,
         email: user.email
     }
 }
