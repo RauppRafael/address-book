@@ -1,14 +1,12 @@
-process.env.NODE_ENV = 'test'
-
-let mongoose = require("mongoose")
-let User = require('../app/models/User')
+const mongoose = require("mongoose")
+const User = require('../app/models/User')
 
 // Require the dev-dependencies
-let server = require('../app/app')
-let chai = require('chai')
-let chaiHttp = require('chai-http')
+const server = require('../app/app')
+const chai = require('chai')
+const chaiHttp = require('chai-http')
 const faker = require('faker')
-let should = chai.should()
+const should = chai.should()
 chai.use(chaiHttp)
 
 // Our parent block

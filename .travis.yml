@@ -4,7 +4,7 @@ node_js:
 - "stable"
 
 env:
-- NODE_ENV="test";APP_SECRET="test123";DB_NAME="mongodb://localhost:27017/test"
+- NODE_ENV="test";APP_SECRET="test123";DB_URI="mongodb://localhost:27017/test"
 
 services:
 - mongodb
