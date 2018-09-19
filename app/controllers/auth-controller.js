@@ -10,7 +10,7 @@ const controller = {
             (err, user, info) => {
 
                 if (err || !user)
-                    return res.status(401).json({errors: [info]})
+                    return res.status(400).json({errors: [info]})
 
                 req.login(user, {session: false}, (err) => {
                     if (err)

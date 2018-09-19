@@ -89,6 +89,29 @@ describe('Authentication', () => {
                     done()
                 })
         })
-    })
 
+        it('It should not log in a empty user', (done) => {
+            chai.request(server)
+                .post('/auth/login')
+                .send({})
+                .end((err, res) => {
+                    res.should.have.status(400)
+                    res.body.should.be.a('object')
+                    res.body.should.not.have.property('token')
+                    done()
+                })
+        })
+
+        it('It should return an array of errors in case of errors', (done) => {
+            chai.request(server)
+                .post('/auth/login')
+                .send({})
+                .end((err, res) => {
+                    res.should.have.status(400)
+                    res.body.should.be.a('object')
+                    res.body.should.have.property('errors').to.be.an('array')
+                    done()
+                })
+        })
+    })
 })
