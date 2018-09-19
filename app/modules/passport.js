@@ -16,13 +16,23 @@ passport.use(
                     throw err
 
                 if (!user)
-                    return done(null, false, {message: 'User not found'})
+                    return done(null, false, {
+                        location: 'body',
+                        param: 'email',
+                        value: email,
+                        msg: 'User not found'
+                    })
 
                 User.comparePassword(password, user.password, (err, isMatch) => {
                     if (err)
                         throw err
 
-                    return isMatch ? done(null, user) : done(null, false, {message: 'Incorrect password'})
+                    return isMatch ? done(null, user) : done(null, false, {
+                        location: 'body',
+                        param: 'password',
+                        value: password,
+                        msg: 'Incorrect password'
+                    })
                 })
 
             })

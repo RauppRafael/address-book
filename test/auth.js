@@ -25,13 +25,10 @@ describe('Authentication', () => {
                 .post('/auth/register')
                 .send(validUser)
                 .end((err, res) => {
-                    res.should.have.status(200)
-
+                    res.should.have.status(201)
                     res.body.should.be.a('object')
                     res.body.should.haveOwnProperty('_id')
                     res.body.should.haveOwnProperty('email')
-                    res.body.should.haveOwnProperty('password')
-
                     done()
                 })
         })
@@ -45,11 +42,8 @@ describe('Authentication', () => {
                 })
                 .end((err, res) => {
                     res.should.have.status(422)
-
                     res.body.should.be.a('object')
-
                     res.body.should.have.property('errors').to.be.an('array').length(1)
-
                     done()
                 })
         })
@@ -63,11 +57,8 @@ describe('Authentication', () => {
                 })
                 .end((err, res) => {
                     res.should.have.status(422)
-
                     res.body.should.be.a('object')
-
                     res.body.should.have.property('errors').to.be.an('array').length(1)
-
                     done()
                 })
         })
@@ -81,11 +72,8 @@ describe('Authentication', () => {
                 })
                 .end((err, res) => {
                     res.should.have.status(422)
-
                     res.body.should.be.a('object')
-
                     res.body.should.have.property('errors').to.be.an('array').length(2)
-
                     done()
                 })
         })
@@ -99,7 +87,7 @@ describe('Authentication', () => {
                 .end((err, res) => {
                     res.should.have.status(200)
                     res.body.should.be.a('object')
-                    res.body.should.haveOwnProperty('token')
+                    res.body.should.have.property('token')
                     done()
                 })
         })
