@@ -14,23 +14,23 @@ const Schema = mongoose.Schema({
 
 const User = module.exports = mongoose.model('User', Schema)
 
-module.exports.createUser = (data, callback) => {
-    bcrypt.genSalt(10, function (err, salt) {
-        bcrypt.hash(data.password, salt, function (err, hash) {
+module.exports.createUser = async (data, callback) => {
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(data.password, salt, (err, hash) => {
             data.password = hash
             data.save(callback)
         })
     })
 }
 
-module.exports.findByEmail = (email, callback) => {
+module.exports.findByEmail = async (email, callback) => {
     const query = {email}
-    User.findOne(query, callback)
+    return await User.findOne(query, callback)
 }
 
-module.exports.findById = (id, callback) => {
+module.exports.findById = async (id, callback) => {
     const query = {id}
-    User.findOne(query, callback)
+    return await User.findOne(query, callback)
 }
 
 module.exports.comparePassword = (password, hash, callback) => {

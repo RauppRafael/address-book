@@ -25,13 +25,25 @@ describe('Authentication', () => {
                 .end((err, res) => {
                     res.should.have.status(201)
                     res.body.should.be.a('object')
-                    res.body.should.haveOwnProperty('_id')
-                    res.body.should.haveOwnProperty('email')
+                    res.body.should.have.property('_id')
+                    res.body.should.have.property('email')
                     done()
                 })
         })
 
-        it('It should not create user with invalid email', (done) => {
+        it('It should not create a user with reused email', (done) => {
+            chai.request(server)
+                .post('/auth/register')
+                .send(validUser)
+                .end((err, res) => {
+                    res.should.have.status(422)
+                    res.body.should.be.a('object')
+                    res.body.should.have.property('errors').to.be.an('array')
+                    done()
+                })
+        })
+
+        it('It should not create a user with invalid email', (done) => {
             chai.request(server)
                 .post('/auth/register')
                 .send({
@@ -46,7 +58,7 @@ describe('Authentication', () => {
                 })
         })
 
-        it('It should not create user with invalid password', (done) => {
+        it('It should not create a user with invalid password', (done) => {
             chai.request(server)
                 .post('/auth/register')
                 .send({
@@ -90,7 +102,7 @@ describe('Authentication', () => {
                 })
         })
 
-        it('It should not log in a empty user', (done) => {
+        it('It should not log in an empty user', (done) => {
             chai.request(server)
                 .post('/auth/login')
                 .send({})
@@ -102,7 +114,7 @@ describe('Authentication', () => {
                 })
         })
 
-        it('It should return an array of errors in case of errors', (done) => {
+        it('It should return an array of errors in case of error', (done) => {
             chai.request(server)
                 .post('/auth/login')
                 .send({})
