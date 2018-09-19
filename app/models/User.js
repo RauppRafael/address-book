@@ -41,3 +41,10 @@ module.exports.comparePassword = (password, hash, callback) => {
         callback(null, isMatch)
     })
 }
+
+module.exports.serialize = (user) => {
+    return {
+        _id: user._id,
+        email: user.email
+    }
+}
