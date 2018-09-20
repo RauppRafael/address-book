@@ -4,13 +4,13 @@ const chai = require('chai')
 const chaiHttp = require('chai-http')
 const faker = require('faker')
 const User = require('../app/models/User')
-const should = chai.should()
 chai.use(chaiHttp)
+chai.should()
 
 describe('Authentication', () => {
 
     before((done) => {
-        User.deleteMany({}, (err) => {
+        User.deleteMany({}, () => {
             done()
         })
     })
