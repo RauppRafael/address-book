@@ -3,14 +3,14 @@ const server = require('../app/app')
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 const faker = require('faker')
-const should = chai.should()
 const User = require('../app/models/User')
 chai.use(chaiHttp)
+chai.should()
 
 describe('Contacts', async () => {
 
     before((done) => {
-        User.deleteMany({}, (err) => {
+        User.deleteMany({}, () => {
             done()
         })
     })

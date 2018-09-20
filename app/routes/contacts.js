@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const _ = require('lodash')
 const controller = require('../controllers/contact-controller')
 const {check, validationResult} = require('express-validator/check')
 
@@ -10,8 +9,6 @@ const validation = [
 
     check('email', 'Email must be a valid email').isEmail().optional(),
 ]
-
-// TODO finish validation
 
 /* Creates a contact. */
 router.post('/', validation, (req, res, next) => {

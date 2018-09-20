@@ -1,7 +1,7 @@
 const Contact = require('../models/Contact')
 
 const controller = {
-    create(req, res, next) {
+    create(req, res) {
         try {
             const contact = new Contact({
                 data: req.body,

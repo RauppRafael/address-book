@@ -14,10 +14,13 @@ const uniqueEmail = check('email').custom(
     }
 )
 
-// TODO expire token
-
 /* POST login. */
 router.post('/login', validEmail, validPassword, (req, res, next) => {
+    const errors = validationResult(req)
+
+    if (!errors.isEmpty())
+        return res.status(422).json({errors: errors.array()})
+
     controller.login(req, res, next)
 })
 
