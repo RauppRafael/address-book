@@ -11,8 +11,6 @@ const validation = [
     check('email', 'Email must be a valid email').isEmail().optional(),
 ]
 
-// TODO finish validation
-
 /* Creates a contact. */
 router.post('/', validation, (req, res, next) => {
     const errors = validationResult(req)
