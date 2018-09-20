@@ -3,7 +3,6 @@ require('dotenv').config()
 // Imports
 const express = require('express')
 const path = require('path')
-const expressValidator = require('express-validator')
 const firebase = require('firebase')
 
 // Routes
@@ -20,11 +19,11 @@ const app = express()
 // Start firebase
 firebase.initializeApp({
     apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: "raupp-address-book.firebaseapp.com",
-    databaseURL: "https://raupp-address-book.firebaseio.com",
-    projectId: "raupp-address-book",
-    storageBucket: "raupp-address-book.appspot.com",
-    messagingSenderId: "486812684592"
+    authDomain: 'raupp-address-book.firebaseapp.com',
+    databaseURL: 'https://raupp-address-book.firebaseio.com',
+    projectId: 'raupp-address-book',
+    storageBucket: 'raupp-address-book.appspot.com',
+    messagingSenderId: '486812684592'
 })
 
 // Middleware

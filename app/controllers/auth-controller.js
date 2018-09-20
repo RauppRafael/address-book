@@ -3,7 +3,7 @@ const passport = require('passport')
 const User = require('../models/User')
 
 const controller = {
-    login(req, res, next) {
+    login(req, res) {
         passport.authenticate('local', {session: false},
             (err, user, info) => {
 
@@ -22,7 +22,7 @@ const controller = {
         )(req, res)
     },
 
-    register(req, res, next) {
+    register(req, res) {
         const user = new User({email: req.body.email, password: req.body.password})
 
         User.createUser(user, (err, createdUser) => {

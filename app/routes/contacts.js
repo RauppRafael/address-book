@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const _ = require('lodash')
 const controller = require('../controllers/contact-controller')
 const {check, validationResult} = require('express-validator/check')
 

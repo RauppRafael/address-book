@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 /* GET API routes. */
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
     res.json({
         routes: {
             auth: {
