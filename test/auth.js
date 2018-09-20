@@ -1,11 +1,9 @@
-const mongoose = require("mongoose")
-const User = require('../app/models/User')
-
-// Require the dev-dependencies
+// Require dependencies
 const server = require('../app/app')
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 const faker = require('faker')
+const User = require('../app/models/User')
 const should = chai.should()
 chai.use(chaiHttp)
 
@@ -126,4 +124,11 @@ describe('Authentication', () => {
                 })
         })
     })
+
+    after((done) => {
+        User.deleteMany({}, (err) => {
+            done()
+        })
+    })
+
 })

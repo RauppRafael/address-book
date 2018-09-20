@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 
-mongoose.connect(process.env.DB_URI, { useNewUrlParser: true })
+const URI = process.env.NODE_ENV.trim() === 'test' ? process.env.TEST_DB_URI : process.env.DB_URI
+
+mongoose.connect(URI, { useNewUrlParser: true })
 const db = mongoose.connection
 
 module.exports = db
