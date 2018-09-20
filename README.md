@@ -6,8 +6,11 @@
 2. Mongodb
 
 
-## Installation
+## Running locally
 1. Run npm install
 2. Create database
-3. Create database collection called `users`
-4. Copy .env.example as .env and fill it's contents
+3. Copy .env.example as .env
+4. Set an `APP_SECRET`, `DB_URI` and `FIREBASE_API_KEY` at the .env file
+
+## Deploying
+To deploy you just need to make a commit to the master branch and the CI will deploy automatically
