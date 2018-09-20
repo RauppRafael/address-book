@@ -7,8 +7,13 @@ const User = require('../app/models/User')
 const should = chai.should()
 chai.use(chaiHttp)
 
-// Our parent block
 describe('Authentication', () => {
+
+    before((done) => {
+        User.deleteMany({}, (err) => {
+            done()
+        })
+    })
 
     const validUser = {
         email: faker.internet.email(),
@@ -105,7 +110,7 @@ describe('Authentication', () => {
                 .post('/auth/login')
                 .send({})
                 .end((err, res) => {
-                    res.should.have.status(400)
+                    res.should.have.status(422)
                     res.body.should.be.a('object')
                     res.body.should.not.have.property('token')
                     done()
@@ -117,18 +122,11 @@ describe('Authentication', () => {
                 .post('/auth/login')
                 .send({})
                 .end((err, res) => {
-                    res.should.have.status(400)
+                    res.should.have.status(422)
                     res.body.should.be.a('object')
                     res.body.should.have.property('errors').to.be.an('array')
                     done()
                 })
         })
     })
-
-    after((done) => {
-        User.deleteMany({}, (err) => {
-            done()
-        })
-    })
-
 })
