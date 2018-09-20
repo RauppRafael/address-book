@@ -7,20 +7,20 @@ class Contact {
 
         this.id = userRef.push().key
         this.name = data.name
-        this.emails = data.emails
-        this.phones = data.phones
-        this.addresses = data.addresses
+        this.email = data.email
+        this.phone = data.phone
+        this.address = data.address
 
-        userRef.child(this.id).set(data)
+        userRef.child(this.id).set(this.map(data))
     }
 
     map(data) {
         const contact = {
             name: data.name
         }
-        if ('emails' in data && data.emails) contact.emails = data.emails
-        if ('phones' in data && data.phones) contact.phones = data.phones
-        if ('addresses' in data && data.addresses) contact.addresses = data.addresses
+        if ('email' in data && data.email) contact.email = data.email
+        if ('phone' in data && data.phone) contact.phone = data.phone
+        if ('address' in data && data.address) contact.address = data.address
 
         return contact
     }
