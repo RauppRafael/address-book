@@ -14,7 +14,10 @@ const controller = {
                     if (err)
                         throw err
 
-                    const token = jwt.sign(user.toObject(), process.env.APP_SECRET, {expiresIn: '2h'})
+                    user = user.toObject()
+                    delete user.password
+
+                    const token = jwt.sign(user, process.env.APP_SECRET, {expiresIn: '2h'})
                     return res.json({user: User.serialize(user), token})
                 })
 
