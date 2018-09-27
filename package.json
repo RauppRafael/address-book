@@ -4,8 +4,8 @@
     "private": false,
     "scripts": {
         "start": "node ./bin/www",
-        "test": "export NODE_ENV=test && mocha --timeout 15000 --exit",
-        "win-test": "SET NODE_ENV=test && mocha --timeout 15000 --exit"
+        "test": "export NODE_ENV=test && mocha --timeout 5000 --exit",
+        "win-test": "SET NODE_ENV=test && mocha --timeout 5000 --exit"
     },
     "dependencies": {
         "aws-sdk": "^2.316.0",
