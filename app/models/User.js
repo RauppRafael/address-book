@@ -29,7 +29,7 @@ module.exports.findByEmail = async (email, callback) => {
 }
 
 module.exports.findById = async (id, callback) => {
-    const query = {id}
+    const query = {_id: id}
     return await User.findOne(query, callback)
 }
 

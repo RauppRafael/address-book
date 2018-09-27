@@ -51,7 +51,7 @@ passport.use(
         },
 
         (jwtPayload, done) => {
-            return User.findById(jwtPayload.id, (err, user) => {
+            return User.findById(jwtPayload._id, (err, user) => {
                 if (err)
                     throw err
 
